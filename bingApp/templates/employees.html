@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees </title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<style>
+
+    h1{
+        text-align: center;
+        color: rgb(221, 221, 235);
+        font: bold;
+        font-size: 800;
+        font-family: cursive;
+        
+       
+    }
+    body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+.container {
+	position: absolute;
+	top: 15%;
+	left: 20%;
+    right: 45%;
+	transform: translate(-50%, -50%);
+}
+
+table {
+	width: 1380px;
+	overflow: hidden;
+    padding-top: 40%;
+}
+
+th,
+td {
+	padding: 6px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: center;
+    font-size: 0.6rem;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+
+tbody {
+	tr {
+        font-size: 0.7rem;
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+            
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+                
+                
+			}
+		}
+	}
+}
+
+  footer{
+    text-align: center;
+    color: rgb(221, 221, 235);
+    font: bold;
+    font-size: 800;
+    font-family: cursive;
+    margin-top: 60%;
+  }  
+
+  img{
+    width: 100px;
+    height: 60px;
+    margin-top: 1px;
+  }
+</style>
+<body>
+    <h1>Employees Data at Bing Technologies LLC</h1>
+    
+    <div class="container">
+        <img src="{% static 'Bing-Logo.jpeg' %}">
+        <br> <br>
+        <table>
+            <thead>
+                <tr>
+
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Email</th>
+                    <th>Employee Phone</th>
+                    <th>Employee Location</th>
+                    <th>Employee Visa Status</th>
+                    <th>Employee Customer</th>
+                    <th>Employee Poc Name</th>
+                    <th>Employee Req Name</th>
+                    <th>Employee Req Number</th>
+                    <th>Employee Req Location</th>
+                    <th>Employee Pay Rate</th>
+                    <th>Employee Bill Rate</th>
+                    <th>Employee Margin</th>
+                    <th>Employee Submitted Date</th>
+                    <th>Employee Status</th>
+                    <th>Employee Submitted By</th>
+                    <th>Employee Message</th>
+            </tr>
+            </thead>
+
+            {% for employee in employees %}
+
+            <tbody>
+                <tr>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Email}}</td>
+                    <td>{{employee.Phone}}</td>
+                    <td>{{employee.Location}}</td>
+                    <td>{{employee.Visa}}</td>
+                    <td>{{employee.Customer}}</td>
+                    <td>{{employee.Poc_Name}}</td>
+                    <td>{{employee.Req_Name}}</td>
+                    <td>{{employee.Req_Number}}</td>
+                    <td>{{employee.Req_Location}}</td>
+                    <td>{{employee.Pay_Rate}}</td>
+                    <td>{{employee.Bill_Rate}}</td>
+                    <td>{{employee.Margin}}</td>
+                    <td>{{employee.Submitted_Date}}</td>
+                    <td>{{employee.Status}}</td>
+                    <td>{{employee.Submitted_By}}</td>
+                    <td>{{employee.Message}}</td>
+                    <td><a href="/delete/{{employee.id}}"><img  src="{% static 'del_logo.gif'%}"></a> Delete Records</td>
+                    <td><a href="/update/{{employee.id}}"><img  src="{% static 'update_logo.gif'%}"></a> Update Records</td>
+                </tr>
+            </tbody>
+
+            {% endfor %}
+
+        </table>
+        <br><br> <br>
+
+        <a href="/create"><img src="{% static 'datalogo.gif'%}"> <br> Create Records.</a> 
+
+        
+    </div>
+    
+    
+</body>
+
+<footer>
+    
+    Copyright Reserved @2024 - Bing Technologies LLC - Delaware, USA
+</footer>
+</html>
+
